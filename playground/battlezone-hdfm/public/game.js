@@ -91,6 +91,14 @@ export default function createGame() {
         })
     }
 
+    function updatePlayerPosition(command) {
+        const playerId = command.playerId
+        const player = state.players[playerId]
+
+        player.x = command.x;
+        player.y = command.y;
+    }
+
     function movePlayer(command) {
         notifyAll(command)
 
@@ -146,7 +154,7 @@ export default function createGame() {
     return {
         addPlayer,
         removePlayer,
-        movePlayer,
+        updatePlayerPosition,
         addMonster,
         removeMonster,
         state,
