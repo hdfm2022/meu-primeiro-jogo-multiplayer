@@ -1,6 +1,6 @@
 import express from 'express'
 import http from 'http'
-import createGame from './public/game.js'
+import createGame from './server/game.js'
 import socketio from 'socket.io'
 
 const app = express()
@@ -16,7 +16,8 @@ const game = createGame()
 game.start()
 
 game.subscribe((command) => {
-    console.log(`> Emitting ${command.type}`)
+    const zoneId = "zoneId" in command ? command.zoneId : null;
+    console.log(`> Emitting ${command.type} | zone = ${zoneId}`)
     sockets.emit(command.type, command)
 })
 

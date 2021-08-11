@@ -8,6 +8,10 @@ export default function createKeyboardListener(document) {
         state.playerId = playerId
     }
 
+    function unsubscribeAll() {
+        state.observers = []
+    }
+
     function subscribe(observerFunction) {
         state.observers.push(observerFunction)
     }
@@ -34,6 +38,7 @@ export default function createKeyboardListener(document) {
 
     return {
         subscribe,
-        registerPlayerId
+        registerPlayerId,
+        unsubscribeAll
     }
 }

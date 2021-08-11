@@ -16,7 +16,7 @@
         <script src="/socket.io/socket.io.js"></script>
     </head>
     <body>
-        <canvas id="screen" width="10" height="10"></canvas>
+        <canvas id="screen" width="20" height="20"></canvas>
 
         <script type="module">
             import createGame from './game.js'
@@ -34,6 +34,12 @@
 
                 const screen = document.getElementById('screen')
                 renderScreen(screen, game, requestAnimationFrame, playerId)
+            })
+
+            socket.on('disconnect', () => {
+                const playerId = socket.id
+                console.log(`Player disconnected`)
+                keyboardListener.unsubscribeAll();
             })
 
             socket.on('setup', (state) => {
