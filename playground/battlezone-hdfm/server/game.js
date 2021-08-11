@@ -127,6 +127,7 @@ export default function createGame() {
             , y : player.y
             , playerId
         }
+        console.log('updatePlayerPosition', commandNewPosition);
         notifyAll(commandNewPosition)
 
         if (player && moveFunction) {

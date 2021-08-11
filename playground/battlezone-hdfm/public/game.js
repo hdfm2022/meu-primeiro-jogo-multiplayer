@@ -97,6 +97,8 @@ export default function createGame() {
 
         player.x = command.x;
         player.y = command.y;
+        
+        console.log('updatePlayerPosition', player);
     }
 
     function movePlayer(command) {
@@ -124,6 +126,7 @@ export default function createGame() {
                 }
             }
         }
+
 
         const keyPressed = command.keyPressed
         const playerId = command.playerId

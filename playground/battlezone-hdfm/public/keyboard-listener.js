@@ -33,6 +33,7 @@ export default function createKeyboardListener(document) {
             keyPressed
         }
 
+        console.log('handleKeydown', command);
         notifyAll(command)
     }
 
