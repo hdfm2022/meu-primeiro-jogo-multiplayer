@@ -92,7 +92,7 @@ export default function createGame() {
     }
 
     function movePlayer(command) {
-
+        console.log(command);
         const acceptedMoves = {
             ArrowUp(player) {
                 if (player.y - 1 >= 0) {
@@ -121,20 +121,20 @@ export default function createGame() {
         const player = state.players[playerId]
         const moveFunction = acceptedMoves[keyPressed]
 
+        if (player && moveFunction) {
+            moveFunction(player)
+            checkForMonsterCollision(playerId)
+        }
+
         const commandNewPosition = {
             type: 'player-new-position'
             , x : player.x
             , y : player.y
             , playerId
         }
+        
         console.log('updatePlayerPosition', commandNewPosition);
         notifyAll(commandNewPosition)
-
-        if (player && moveFunction) {
-            moveFunction(player)
-            checkForMonsterCollision(playerId)
-        }
-        
         // notifyAll(command)
 
     }
